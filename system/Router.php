@@ -18,6 +18,12 @@ class Router
         $explodedRoute = explode('/', $_SERVER['REQUEST_URI']);
         $controller = ucfirst($explodedRoute[$controllerKey]).'Controller';
 
+
+        //THIS is make main route to redirect to statistic page
+        if ($explodedRoute[$controllerKey] == ''){
+            header('Location: '.'statistic');
+
+        }
         if (!file_exists('Controllers'.DIRECTORY_SEPARATOR.$controller.'.php')){
             echo "Route not found";die;
         }

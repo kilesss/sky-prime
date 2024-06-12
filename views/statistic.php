@@ -12,96 +12,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-    <style>@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
-
-        body {
-            font-family: "Lato", sans-serif;
-        }
-
-        .table-container {
-            margin: auto;
-            max-width: 1200px;
-            min-height: 100vh;
-            overflow: scroll;
-            width: 100%;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        thead tr {
-            border-bottom: 1px solid #ddd;
-            border-top: 1px solid #ddd;
-            height: 1px;
-        }
-
-        th {
-            font-weight: bold;
-            height: inherit;
-            padding: 0;
-        }
-
-        th:not(:first-of-type) {
-            border-left: 1px solid #ddd;
-        }
-
-        th button {
-            background-color: #eee;
-            border: none;
-            cursor: pointer;
-            display: block;
-            font: inherit;
-            height: 100%;
-            margin: 0;
-            min-width: max-content;
-            padding: 0.5rem 1rem;
-            position: relative;
-            text-align: left;
-            width: 100%;
-        }
-
-        th button::after {
-            position: absolute;
-            right: 0.5rem;
-        }
-
-        th button[data-dir="asc"]::after {
-            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpolygon points='0, 0 8,0 4,8 8' fill='%23818688'/%3E%3C/svg%3E");
-        }
-
-        th button[data-dir="desc"]::after {
-            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpolygon points='4 0,8 8,0 8' fill='%23818688'/%3E%3C/svg%3E");
-        }
-
-        tbody tr {
-            border-bottom: 1px solid #ddd;
-        }
-
-        td {
-            padding: 0.5rem 1rem;
-            text-align: left;
-        }
-
-        footer {
-            background-color: #ffdfb9;
-            margin: 2rem -8px -8px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        footer a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        footer .heart {
-            color: #dc143c;
-        }
-
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="public/css/basic.css"  />
     <title></title>
 
 </head>
@@ -280,86 +191,15 @@
         </table>
     </div>
 </div>
+
 <script>
     const response = {
         "pokedata": <?php echo $requestedData;?>
 
     }
-
-    const tableContent = document.getElementById("table-content")
-    const tableButtons = document.querySelectorAll("th button");
-
-    const createRow = (obj) => {
-        const row = document.createElement("tr");
-        const objKeys = Object.keys(obj);
-        objKeys.map((key) => {
-            const cell = document.createElement("td");
-            cell.setAttribute("data-attr", key);
-            cell.innerHTML = obj[key];
-            row.appendChild(cell);
-        });
-        return row;
-    };
-
-    const getTableContent = (data) => {
-        data.map((obj) => {
-            const row = createRow(obj);
-            tableContent.appendChild(row);
-        });
-    };
-
-    const sortData = (data, param, direction = "asc") => {
-        tableContent.innerHTML = '';
-        const sortedData =
-            direction == "asc"
-                ? [...data].sort(function (a, b) {
-                    if (a[param] < b[param]) {
-                        return -1;
-                    }
-                    if (a[param] > b[param]) {
-                        return 1;
-                    }
-                    return 0;
-                })
-                : [...data].sort(function (a, b) {
-                    if (b[param] < a[param]) {
-                        return -1;
-                    }
-                    if (b[param] > a[param]) {
-                        return 1;
-                    }
-                    return 0;
-                });
-
-        getTableContent(sortedData);
-    };
-
-    const resetButtons = (event) => {
-        [...tableButtons].map((button) => {
-            if (button !== event.target) {
-                button.removeAttribute("data-dir");
-            }
-        });
-    };
-
-    window.addEventListener("load", () => {
-        getTableContent(response.pokedata);
-
-        [...tableButtons].map((button) => {
-            button.addEventListener("click", (e) => {
-                resetButtons(e);
-                if (e.target.getAttribute("data-dir") == "desc") {
-                    sortData(response.pokedata, e.target.id, "desc");
-                    e.target.setAttribute("data-dir", "asc");
-                } else {
-                    sortData(response.pokedata, e.target.id, "asc");
-                    e.target.setAttribute("data-dir", "desc");
-                }
-            });
-        });
-    });
-
-
 </script>
+<script src="public/javascript/basic.js"></script>
+
 </body>
+
 </html>

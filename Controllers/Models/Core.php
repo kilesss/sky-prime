@@ -5,15 +5,28 @@ namespace Controllers\Models;
 include_once 'system/PDODb.php';
 use PDODb;
 
+/**
+ *
+ */
 class Core
 {
 
+    /**
+     * @var PDODb
+     */
     public $db;
+
+    /**
+     *
+     */
     public function __construct()
     {
         $this->db = $this->makePDOConnection();
     }
 
+    /**
+     * @return PDODb
+     */
     public function makePDOConnection()
     {
         return new PDODb(['type' => 'mysql',

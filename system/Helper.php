@@ -1,4 +1,8 @@
 <?php
+/**
+ * @param $property
+ * @return mixed|string
+ */
 function parseEnv($property)
 {
     $dir = dirname(__FILE__);
@@ -10,6 +14,11 @@ function parseEnv($property)
         return '';
 }
 
+/**
+ * @param $viewName
+ * @param $properties
+ * @return void
+ */
 function view($viewName, $properties = [])
 {
 
@@ -20,6 +29,13 @@ function view($viewName, $properties = [])
         die;
     }
 }
+
+/**
+ * @param $filePath
+ * @param $variables
+ * @param $print
+ * @return false|string|void
+ */
 function includeWithVariables($filePath, $variables = array(), $print = true)
 {
     // Extract the variables to a local namespace
