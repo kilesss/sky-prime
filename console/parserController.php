@@ -1,4 +1,5 @@
 <?php
+include '../system/Helper.php';
 
 
 class ParserController
@@ -29,15 +30,17 @@ class ParserController
         require $className;
 
     }
+
     public function makePDOConnection()
     {
         return new PDODb(['type' => 'mysql',
-            'host' => '127.0.0.1',
-            'username' => 'root',
-            'password' => '',
-            'dbname'=> 'sky-prime',
-            'port' => 3306,
-            'charset' => 'utf8']);
+            'host' => parseEnv('DB_host'),
+            'username' => parseEnv('DB_username'),
+            'password' => parseEnv('DB_password'),
+            'dbname'=> parseEnv('DB_dbname'),
+            'port' => parseEnv('DB_port'),
+            'charset' => parseEnv('DB_charset')
+        ]);
         //
     }
     private function readData()

@@ -1,6 +1,7 @@
 <?php
 require_once "parserController.php";
 require_once "../system/PDODb.php";
+
 new parserController('ek_obl.json', 'Areas');
 new parserController('ek_obst.json', 'Municapility');
 new parserController('ek_kmet.json', 'Townhall');

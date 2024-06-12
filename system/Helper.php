@@ -1,7 +1,9 @@
 <?php
 function parseEnv($property)
 {
-    $env = parse_ini_file('.env');
+    $dir = dirname(__FILE__);
+    $dir = str_replace('system', '', $dir);
+    $env = parse_ini_file($dir.DIRECTORY_SEPARATOR.'.env');
         if (isset($env[$property])){
             return $env[$property];
         }

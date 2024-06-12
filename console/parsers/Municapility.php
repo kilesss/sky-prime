@@ -18,10 +18,10 @@ class Municapility
             // just remove empty lines or lines with other information
             if (isset($item->ekatte) && $item->ekatte != null){
                 $instance->insert('municapility', [
-                    "obshtina"=>$item->obshtina,
+                    "municapility"=>$item->obshtina,
                     "ekatte"=>$item->ekatte,
-                    "name"=>$item->name,
-                    "name_en"=>$item->name,
+                    "name_municapility"=>$item->name,
+                    "name_municapility_en"=>$item->name,
                     "document"=>$item->document,
                     "nuts1"=>$item->nuts1,
                     "nuts2"=>$item->nuts2,
