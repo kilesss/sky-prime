@@ -136,19 +136,19 @@ class SettlementsModel extends Core
         }
         if (isset($data['nuts1']) && !empty($data['nuts1'])) {
             $query = $this->whereExist($query);
-            $query .= " nuts1 = ?";
+            $query .= " settlements.nuts1 = ?";
             $queryProperties[] = $data['nuts1'];
 
         }
         if (isset($data['nuts2']) && !empty($data['nuts2'])) {
             $query = $this->whereExist($query);
-            $query .= " nuts2 = ?";
+            $query .= " settlements.nuts2 = ?";
             $queryProperties[] = $data['nuts2'];
 
         }
         if (isset($data['nuts3']) && !empty($data['nuts3'])) {
             $query = $this->whereExist($query);
-            $query .= " nuts3 = ?";
+            $query .= " settlements.nuts3 = ?";
             $queryProperties[] = $data['nuts3'];
 
         }
@@ -167,7 +167,7 @@ class SettlementsModel extends Core
         }
         if (isset($data['document']) && !empty($data['document'])) {
             $query = $this->whereExist($query);
-            $query .= " document = ?";
+            $query .= " settlements.document = ?";
             $queryProperties[] = $data['document'];
 
         }
