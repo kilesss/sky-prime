@@ -27,9 +27,10 @@ class StatisticController
             if ($validate->validationStatus() == true){
                 $requestedData = $model->getRequestedData($postData);
             }else{
-                $this->$validate->getError();
+                $errors = $validate->getError();
             }
         }
+//        var_dump($errors);die;
         $dataFilters = $model->getDataForFilters();
         view('statistic',[
             'dataFilters' => $dataFilters,

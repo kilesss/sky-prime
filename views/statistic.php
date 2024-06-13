@@ -23,7 +23,13 @@
             <div class="form-group pr-3">
                 <label for="ekkate">EKATTE</label>
                 <input type="text" class="form-control" name="ekatte" id="EKATTE" aria-describedby="EKATTE"
+                       value="<?php if(isset($postData['ekatte'])){ echo$postData['ekatte']; }?>"
                        placeholder="EKATTE">
+                        <?php if (isset($errors['ekatte'])){
+                            foreach($errors['ekatte'] as $error){
+                                echo "<small class='text-danger'>$error</small>";
+                            }
+                        }?>
             </div>
 
             <div class="form-group pr-3">
@@ -31,20 +37,38 @@
                 <select class="form-control" name="tvm" id="tvm">
                     <option value="">избери</option>
                     <?php foreach ($dataFilters['tvm'] as $tvm) {
-
-                        echo "<option value='" . $tvm['t_v_m'] . "'>" . $tvm['t_v_m'] . "</option>";
+                        $selected = '';
+                        if (isset($postData['tvm']) && $tvm['t_v_m'] == $postData['tvm']) { $selected = 'selected'; }
+                        echo "<option   $selected value='" . $tvm['t_v_m'] . "'>" . $tvm['t_v_m'] . "</option>";
                     } ?>
                 </select>
+                <?php if (isset($errors['tvm'])){
+                    foreach($errors['tvm'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="name">Име</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Име">
-
+                <input type="text" class="form-control" name="name"
+                       value="<?php if(isset($postData['name'])){ echo $postData['name']; }?>"
+                       id="name" placeholder="Име">
+                    <?php if (isset($errors['name'])){
+                        foreach($errors['name'] as $error){
+                            echo "<small class='text-danger'>$error</small>";
+                        }
+                    }?>
             </div>
             <div class="form-group pr-3">
                 <label for="name_en">Транслитерация</label>
-                <input type="text" class="form-control" name="name_en" id="name_en" placeholder="Транслитерация">
-
+                <input type="text" class="form-control" name="name_en"
+                       value="<?php if(isset($postData['name_en'])){ echo $postData['name_en']; }?>"
+                       id="name_en" placeholder="Транслитерация">
+                <?php if (isset($errors['name_en'])) {
+                    foreach ($errors['name_en'] as $error) {
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                } ?>
             </div>
 
             <div class="form-group pr-3">
@@ -55,43 +79,88 @@
                         echo "<option value='" . $area . "'>$area</option>";
                     } ?>
                 </select>
+                <?php if (isset($errors['area'])){
+                    foreach($errors['area'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="name_area">Име на областта</label>
-                <input type="text" class="form-control" name="name_area" id="name_area" placeholder="Име на областта">
-
+                <input type="text" class="form-control"
+                       value="<?php if(isset($postData['name_area'])){ echo $postData['name_area']; }?>"
+                       name="name_area" id="name_area" placeholder="Име на областта">
+                <?php if (isset($errors['name_area'])){
+                    foreach($errors['name_area'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="municapility">Код на общината</label>
                 <input type="text" class="form-control" name="municapility" id="municapility"
+                       value="<?php if(isset($postData['municapility'])){ echo $postData['municapility']; }?>"
                        placeholder="Код на общината">
-
+                <?php if (isset($errors['municapility'])){
+                    foreach($errors['municapility'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="name_municapility">Име на общината</label>
                 <input type="text" class="form-control" name="name_municapility" id="name_municapility"
+                       value="<?php if(isset($postData['name_municapility'])){ echo $postData['name_municapility']; }?>"
                        placeholder="Име на общината">
-
+                <?php if (isset($errors['name_municapility'])){
+                    foreach($errors['name_municapility'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="townhall">Кметство</label>
-                <input type="text" class="form-control" name="townhall" id="townhall" placeholder="Кметство">
-
+                <input type="text" class="form-control" name="townhall" id="townhall"
+                       value="<?php if(isset($postData['townhall'])){ echo $postData['townhall']; }?>"
+                       placeholder="Кметство">
+                <?php if (isset($errors['townhall'])){
+                    foreach($errors['townhall'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="nuts1">NUTS1</label>
-                <input type="text" class="form-control" name="nuts1" id="nuts1" placeholder="NUTS1">
-
+                <input type="text" class="form-control" name="nuts1" id="nuts1"
+                       value="<?php if(isset($postData['nuts1'])){ echo $postData['nuts1']; }?>"
+                       placeholder="NUTS1">
+                <?php if (isset($errors['nuts1'])){
+                    foreach($errors['nuts1'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="nuts2">NUTS2</label>
-                <input type="text" class="form-control" name="nuts2" id="nuts2" placeholder="NUTS2">
-
+                <input type="text" class="form-control" name="nuts2" id="nuts2"
+                       value="<?php if(isset($postData['nuts2'])){ echo $postData['nuts2']; }?>"
+                       placeholder="NUTS2">
+                <?php if (isset($errors['nuts2'])){
+                    foreach($errors['nuts2'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="nuts3">NUTS3</label>
-                <input type="text" class="form-control" name="nuts3" id="nuts3" placeholder="NUTS3">
-
+                <input type="text" class="form-control" name="nuts3" id="nuts3"
+                       value="<?php if(isset($postData['nuts3'])){ echo $postData['nuts3']; }?>"
+                       placeholder="NUTS3">
+                <?php if (isset($errors['nuts3'])){
+                    foreach($errors['nuts3'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
 
 
@@ -99,33 +168,60 @@
                 <label for="kind">Код на типа</label>
                 <select class="form-control" id="kind" name="kind">
                     <option value="">избери</option>
-                    <?php foreach ($dataFilters['kind'] as $area) {
-                        echo "<option value='" . $area . "'>$area</option>";
+                    <?php foreach ($dataFilters['kind'] as $kind) {
+                        if (isset($postData['kind']) && $kind == $postData['kind']) { $selected = 'selected'; }
+
+                        echo "<option $selected value='" . $kind . "'>$kind</option>";
                     } ?>
                 </select>
+                <?php if (isset($errors['kind'])){
+                    foreach($errors['kind'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="category">Код на категорията</label>
                 <select class="form-control" id="category" name="category">
                     <option value="">избери</option>
-                    <?php foreach ($dataFilters['category'] as $area) {
-                        echo "<option value='" . $area . "'>$area</option>";
+                    <?php foreach ($dataFilters['category'] as $category) {
+                        $selected = '';
+                        if (isset($postData['category']) && $category == $postData['category']) { $selected = 'selected'; }
+                        echo "<option $selected value='" . $category . "'>$category</option>";
                     } ?>
                 </select>
+                <?php if (isset($errors['category'])){
+                    foreach($errors['category'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="altitude">Надморска височина</label>
                 <select class="form-control" id="altitude" name="altitude">
                     <option value="">избери</option>
-                    <?php foreach ($dataFilters['altitude'] as $area) {
-                        echo "<option value='" . $area . "'>$area</option>";
+                    <?php foreach ($dataFilters['altitude'] as $altitude) {
+                        $selected = '';
+                        if (isset($postData['altitude']) && $altitude == $postData['altitude']) { $selected = 'selected'; }
+                        echo "<option $selected value='" . $altitude . "'>$altitude</option>";
                     } ?>
                 </select>
+                <?php if (isset($errors['altitude'])){
+                    foreach($errors['altitude'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-group pr-3">
                 <label for="document">Код на документа</label>
-                <input type="text" class="form-control" name="document" id="document" placeholder="Код на документа">
-
+                <input type="text" class="form-control" name="document" id="document"
+                       value="<?php if(isset($postData['document'])){ echo $postData['document']; }?>"
+                       placeholder="Код на документа">
+                <?php if (isset($errors['document'])){
+                    foreach($errors['document'] as $error){
+                        echo "<small class='text-danger'>$error</small>";
+                    }
+                }?>
             </div>
             <div class="form-form-group pr-3 mt-4 pt-2">
                 <button class="btn btn-success" type="submit">Филтрирай</button>
